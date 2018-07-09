@@ -9,6 +9,8 @@ import java.io.File
  */
 object CConstants {
 
+    const val languageFileName = "locales.content"
+
     val appPath = System.getProperty("user.dir")
     val adbPath = appPath + File.separator + OS_SDK_PLATFORM_TOOLS_FOLDER + FN_ADB
 

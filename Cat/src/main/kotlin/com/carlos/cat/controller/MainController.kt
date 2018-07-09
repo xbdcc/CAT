@@ -6,10 +6,14 @@ import com.carlos.cat.uiautomator.DebugBridge
 import com.carlos.cat.uiautomator.UiAutomatorHelper
 import com.carlos.cat.uiautomator.UiAutomatorModel
 import com.carlos.cat.util.AdbHelper
+import com.carlos.cat.util.LanguageUtil
 import javafx.fxml.FXML
 import javafx.fxml.Initializable
 import javafx.scene.canvas.Canvas
+import javafx.scene.control.Label
+import javafx.scene.control.Menu
 import javafx.scene.control.MenuBar
+import javafx.scene.control.MenuItem
 import javafx.scene.image.Image
 import javafx.scene.image.ImageView
 import javafx.scene.layout.AnchorPane
@@ -30,14 +34,27 @@ class MainController : Initializable {
 
     @FXML
     private lateinit var imageView: ImageView
+    @FXML
+    private lateinit var title: Label
 
     override fun initialize(location: URL?, resources: ResourceBundle?) {
         menuBar.isUseSystemMenuBar = true
+
+//        val menuBar =MenuBar()
+        val menu = Menu(LanguageUtil.getString("Edit"))
+        val menuItem = MenuItem(LanguageUtil.getString("Undo"))
+        menu.items.add(menuItem)
+
+        menuBar.menus.clear()
+        menuBar.menus.add(menu)
+
 
         val canvas = Canvas()
         val holder = StackPane()
         canvas.setTranslateX(0.0)
         canvas.setTranslateY(0.0)
+
+        title.text = LanguageUtil.getString("Cat")
 //        anchorPane.getChildren().add(imageView)
 //        anchorPane.getChildren().add(canvas)
 //        anchorPane.getChildren().add(holder)
@@ -59,7 +76,7 @@ class MainController : Initializable {
         Thread.sleep(1000)
         val device = pickDevice()
 
-        println(device!!.serialNumber)
+//        println(device!!.serialNumber)
         if (device != null) {
 
             val result = UiAutomatorHelper.takeSnapshot(device, true)
