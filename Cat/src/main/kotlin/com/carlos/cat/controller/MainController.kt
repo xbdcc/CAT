@@ -1,11 +1,10 @@
 package com.carlos.cat.controller
 
 import com.android.ddmlib.IDevice
+import com.carlos.cat.part.DetailsPart
 import com.carlos.cat.part.ImagePart
 import com.carlos.cat.uiautomator.DebugBridge
-import com.carlos.cat.uiautomator.UiAutomatorHelper
 import com.carlos.cat.uiautomator.UiAutomatorModel
-import com.carlos.cat.util.AdbHelper
 import com.carlos.cat.util.LanguageUtil
 import javafx.fxml.FXML
 import javafx.fxml.Initializable
@@ -37,6 +36,9 @@ class MainController : Initializable {
     @FXML
     private lateinit var title: Label
 
+    lateinit var detailsPart: DetailsPart
+
+
     override fun initialize(location: URL?, resources: ResourceBundle?) {
         menuBar.isUseSystemMenuBar = true
 
@@ -56,40 +58,34 @@ class MainController : Initializable {
 
         title.text = LanguageUtil.getString("Cat")
 //        anchorPane.getChildren().add(imageView)
-//        anchorPane.getChildren().add(canvas)
+        anchorPane.getChildren().add(canvas)
 //        anchorPane.getChildren().add(holder)
 
+        detailsPart = DetailsPart(anchorPane)
+        detailsPart.init()
 
-
-        val mUiAutomatorView = ImagePart(anchorPane, imageView)
+        val mUiAutomatorView = ImagePart(this,anchorPane, imageView)
     }
 
-    @FXML
-    fun click() {
+//    fun click() {
 
-        println("click")
+//        detailsPart.addItems()
 
         // to prevent blocking the ui thread, we do the saving in the other thread.
-
 //        AdbHelper.instance.init()
 
-        Thread.sleep(1000)
-        val device = pickDevice()
-
-//        println(device!!.serialNumber)
-        if (device != null) {
-
-            val result = UiAutomatorHelper.takeSnapshot(device, true)
-            //
-            setModel(result.model, result.uiHierarchy, result.screenshot)
-        }
+//        Thread.sleep(1000)
+//        val device = pickDevice()
 //
-//        val result = UiAutomatorHelper.takeSnapshot(device, true)
-//        //
-//        setModel(result.model, result.uiHierarchy, result.screenshot)
+////        println(device!!.serialNumber)
+//        if (device != null) {
+//
+//            val result = UiAutomatorHelper.takeSnapshot(device, true)
+//            //
+//            setModel(result.model, result.uiHierarchy, result.screenshot)
+//        }
 
-
-    }
+//    }
 
     fun setModel(model: UiAutomatorModel, modelBackingFile: File, screenshot: Image) {
         println(screenshot)

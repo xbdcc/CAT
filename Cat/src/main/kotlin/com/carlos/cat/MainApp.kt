@@ -1,28 +1,16 @@
 package com.carlos.cat
 
-import com.android.ddmlib.IDevice
-import com.carlos.cat.listener.DeviceChangeListener
 import com.carlos.cat.listener.DeviceListener
 import com.carlos.cat.util.AdbHelper
-import com.carlos.cat.util.LanguageUtil
+import com.carlos.cat.util.CConstants
 import com.carlos.cat.util.LogUtil
 import com.carlos.cat.view.TrayIconView
 import javafx.application.Application
-import javafx.application.Platform
 import javafx.fxml.FXMLLoader
 import javafx.scene.Parent
 import javafx.scene.Scene
 import javafx.scene.image.Image
 import javafx.stage.Stage
-import javafx.stage.StageStyle
-import org.slf4j.LoggerFactory
-import java.awt.TrayIcon
-import javax.imageio.ImageIO
-import java.awt.image.BufferedImage
-import java.awt.SystemTray
-import java.awt.event.MouseAdapter
-import java.awt.event.MouseEvent
-import javax.swing.JFrame
 
 
 /**￼
@@ -53,8 +41,9 @@ class MainApp : Application(),DeviceListener {
         AdbHelper.instance.init()
 
         val fxmlLoader = FXMLLoader()
-        fxmlLoader.location = MainApp::class.java.getResource("/ui/main.fxml")
-        primaryStage.icons.add(Image("/img/xbd.jpg"))
+        println(CConstants.FXML_MAIN)
+        fxmlLoader.location = MainApp::class.java.getResource(CConstants.FXML_MAIN)
+        primaryStage.icons.add(Image(CConstants.IMG_ICON))
 
         val parent = fxmlLoader.load<Parent>()
         val scene = Scene(parent)

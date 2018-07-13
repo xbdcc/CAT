@@ -1,3 +1,5 @@
+package com.carlos.cat;
+
 import org.junit.Test;
 
 /**

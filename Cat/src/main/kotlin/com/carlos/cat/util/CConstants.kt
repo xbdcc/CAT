@@ -9,11 +9,24 @@ import java.io.File
  */
 object CConstants {
 
+    /**
+     * path
+     */
     const val languageFileName = "locales.content"
-
     val appPath = System.getProperty("user.dir")
     val adbPath = appPath + File.separator + OS_SDK_PLATFORM_TOOLS_FOLDER + FN_ADB
 
+    /**
+     * fxml
+     */
+    const val FXML = "/ui/"
+    const val FXML_MAIN = "${FXML}main.fxml"
+
+    /**
+     * img
+     */
+    const val IMG = "/img/"
+    const val IMG_ICON = "${IMG}xbd.jpg"
 
     val a = mapOf(Pair("test","test"))
 //    val b = a.getor

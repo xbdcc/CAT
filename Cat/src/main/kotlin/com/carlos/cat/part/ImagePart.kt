@@ -1,6 +1,6 @@
 package com.carlos.cat.part
 
-import javafx.scene.canvas.Canvas
+import com.carlos.cat.controller.MainController
 import javafx.scene.image.ImageView
 import javafx.scene.input.MouseButton
 import javafx.scene.layout.Pane
@@ -13,14 +13,17 @@ class ImagePart {
     private val pane: Pane
     private val canvas: ImageView
 
-    constructor(pane: Pane, canvas: ImageView) {
+    constructor(mainController: MainController,pane: Pane, canvas: ImageView) {
         this.pane = pane
         this.canvas = canvas
 
         canvas.setOnMouseReleased { event ->
             val button = event.button
             when(button) {
-                MouseButton.PRIMARY-> println("Left Button Pressed")
+                MouseButton.PRIMARY-> {
+                    println("Left Button Pressed")
+                    mainController.detailsPart.addItems()
+                }
                 MouseButton.SECONDARY-> println("Right Button Pressed")
             }
         }

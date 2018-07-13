@@ -12,6 +12,9 @@ class FileTest {
 
     @Test
     fun test(){
+
+        val b ="nihao"
+        println("${b}fd")
         val type = System.getenv()
         println(type)
 

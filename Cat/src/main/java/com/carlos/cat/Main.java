@@ -5,20 +5,18 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-//        Parent root = FXMLLoader.load(getClass().getResource("/ui/image.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/ui/image.fxml"));
 //        Parent root = FXMLLoader.load(getClass().getResource("/ui/main.fxml"));
 
-        Button root = new Button("hello");
+//        Button root = new Button("hello");
 //
 //        MenuBar menuBar = new MenuBar(new Menu("hello"),new Menu("hh"));
 //        menuBar.setUseSystemMenuBar(true);
@@ -42,11 +40,11 @@ public class Main extends Application {
 
 
         primaryStage.setTitle("Hello World");
-//        primaryStage.setScene(new Scene(root, 300, 275));
-//        primaryStage.show();
+        primaryStage.setScene(new Scene(root, 300, 275));
+        primaryStage.show();
 
 
-//        DebugBridge.init();
+        DebugBridge.init();
 
         System.out.println("hello");
 
